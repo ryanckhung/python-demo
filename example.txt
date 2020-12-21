@@ -1,0 +1,74 @@
+Array of Dictionary to Dataframe
+dataframe = pd.DataFrame([{},{},{}])
+
+Get the unique value from a particular column
+From dataframe with column name "key", only store the unique value to keys
+keys= dataframe["key"].unique()
+
+Get all the row from the dataframe which meet the condition
+Store all the rows to x WHERE df column "key" equals "success"
+x = df[df["key"]=="success"] => x = df[<condition>]
+
+Apply a function to a column
+this example make all -ve value to be zero
+df["key"] = df["key"].apply(lambda x: x if x>=0 else 0)
+
+Assume a dataframe has 10 columns and you want to select column 'a' and 'b' to form a new df1
+df1 = df[['a','b']]
+
+if (w["key"]>=0). >>  w["key"] = 10 else =20
+w["key"] = np.where(w["key"] >= 0 , 10, 20)
+
+remove all the row that contain na
+df.dropna()
+
+sort all the row by the field "key"
+df.sort_values(by=['key'])
+
+drop columns
+df = final.drop(columns=['key','start','end'])
+df = final.drop(["key", "start", "end"], axis=1)
+
+drop rows
+df_simplify = df.drop([1,3,5])
+
+Check if any False value inside the column
+considtionList = df['condition'].values.tolist()
+False in conditionList
+
+If condition in a single line
+fruit = 'Apple'
+isApple = True if fruit == 'Apple' else False
+
+Short cut for list
+accList = [{'acc_x': item["accX"], 'acc_y': item['accY'], 'acc_z': item['accZ']} for item in wbData]
+
+short cut for list
+x = [1.2345, 2.3456, 3.45667]
+[round(x,2) for x in x ]
+gives [1.23, 2.35, 3.46]
+
+short cut for if condition
+x = True
+y = 1 if x else 0
+this example y give 1
+
+create a column base on the other two columns
+for a dataframe: if(df["B"]>50) {df["C"] = df["A"]} else {df["C"] = 0}
+df["C"] = df.apply(lambda row: row["A"] if row["B"]> 50 else 0, axis = 1)
+
+if (x>=2) {x=x-1} else {x=-1}
+x = x - 1 if x>=2 else -1
+
+short cut example
+>>> y = [1,2,3,0.3,4,0.5,6,0.7]
+>>> z = [x if x>=1 else 0 for x in y]
+>>> z
+[1, 2, 3, 0, 4, 0, 6, 0]
+
+
+>>> 5 if True else 0
+5
+>>> 5 if False else 0
+0
+>>> 
