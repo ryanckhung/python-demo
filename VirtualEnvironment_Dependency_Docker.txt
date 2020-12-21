@@ -1,0 +1,62 @@
+======================================================================================================================
+During the development phase use virtual environment:
+
+Python Virtual Environment
+1. Find a directory and run the following command
+	> python3 -m venv <env-name>
+	> source <env-name>/bin/activate
+	(then you will goto the virtual environment, to quit the virtual environment, type "deactivate")
+2. Under the virtual, please install the package you needed
+3. Then you can change to any directory to run the python code
+
+
+======================================================================================================================
+Output the dependency and deploy by Docker
+
+Dependency
+Node - package.json
+Python - requirement.txt
+
+List the dependency
+> pip list
+
+Output the package and version installed in the current environment
+> pip freeze
+Output the dependency to the requirement.txt
+> pip freeze > requirements.txt
+
+Copy to and other environment and install it
+> pip install -r requirement.txt
+The requriement.txt can also be used by the docker
+
+
+======================================================================================================================
+Docker (refer to my GitHub)
+1. write he docker file, build and deploy
+2. Build: docker build -t model . (Run this command a the root of the source code which can locate the requirement.txt)
+3. docker run -d -p 80:80 model01  (-d means running in background)
+
+
+Sample Dockerfile for python (the -u parameter in the last statement is allow the python print show the message in foreground)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FROM python:3
+
+WORKDIR /usr/src/app
+
+COPY requirements.txt ./
+RUN pip install -r requirements.txt
+
+COPY . .
+
+EXPOSE 80
+CMD [ "python", "-u", "./main.py" ]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+> docker build -t model01 .
+> Execute the docker image by
+> docker run -d -p 80:80 model01 or (docker run -d model01 => if it's well know port, -d means work in background)
+> docker exec -it <container ID> bash
+
+
+
+
