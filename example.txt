@@ -57,6 +57,10 @@ create a column base on the other two columns
 for a dataframe: if(df["B"]>50) {df["C"] = df["A"]} else {df["C"] = 0}
 df["C"] = df.apply(lambda row: row["A"] if row["B"]> 50 else 0, axis = 1)
 
+you can apply a function on a particular column to generate the other new column
+df["time"] = df.apply(lambda row: function(row["value"]), axis = 1)
+
+
 if (x>=2) {x=x-1} else {x=-1}
 x = x - 1 if x>=2 else -1
 
